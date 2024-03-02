@@ -35,7 +35,7 @@ class ApiWrapper:
         # iterate through all the messages
         for message in messages:
 
-            if message["role" == "user":
+            if message["role"] == "user":
 
                 output += f"<s> {start} {message['content']} {end}"
 
