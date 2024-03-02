@@ -1,5 +1,6 @@
 Flask==3.0.0
 requests
 flask_cors
+flask_cloudflared
 fake_useragent
 
