@@ -149,6 +149,18 @@ CORS(app)
 @app.route('/chat/completions', methods=['POST'])
 def chat() -> str:
 
+    # auth check
+    # get authorization header
+    auth = request.headers.get("Authorization", None)
+
+    # check if the header is present
+    if auth is None:
+        return jsonify({"error": "Authorization header not present"}), 401
+    
+    # check if the header is valid compared to env variable
+    if auth != "Bearer " + os.environ["API_KEY"]:
+        return jsonify({"error": "Invalid Authorization header"}), 401
+
     # get request json
     data = request.get_json()
 
@@ -178,6 +190,18 @@ def chat() -> str:
 # route to get all available models
 @app.route('/models', methods=['GET'])
 def models() -> str:
+
+    # auth check
+    # get authorization header
+    auth = request.headers.get("Authorization", None)
+
+    # check if the header is present
+    if auth is None:
+        return jsonify({"error": "Authorization header not present"}), 401
+    
+    # check if the header is valid compared to env variable
+    if auth != "Bearer " + os.environ["API_KEY"]:
+        return jsonify({"error": "Invalid Authorization header"}), 401
 
     return jsonify({
         "data": [
