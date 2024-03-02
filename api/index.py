@@ -1,5 +1,6 @@
 # ---------------------------------------------- FLASK IMPORTS ---------------------------------------------- #
 from flask import Flask, render_template, request, jsonify, Response
+from flask_cloudflared import run_with_cloudflared
 from flask_cors import CORS
 import os
 
@@ -220,4 +221,6 @@ def index():
 
 # ---------------------------------------------- RUN APP ---------------------------------------------- #
 if __name__ == '__main__':
+
+    run_with_cloudflared(app)
     app.run(host="0.0.0.0", port=5000, debug=False)
