@@ -35,21 +35,18 @@ class ApiWrapper:
         # iterate through all the messages
         for message in messages:
 
-            match message['role']:
+            if message["role" == "user":
 
-                # if the role is user
-                case "user":
+                output += f"<s> {start} {message['content']} {end}"
 
-                    output += f"<s> {start} {message['content']} {end}"
+            elif message["system"] == "system":
 
-                case "system":
+                output += f"<s> {start} [SYSTEM: {message['content']}] {end}"
 
-                    output += f"<s> {start} [SYSTEM: {message['content']}] {end}"
+            # if the role is assistant
+            else:
 
-                # if the role is assistant
-                case "assistant":
-
-                    output += f"{message['content']} </s>"
+                output += f"{message['content']} </s>"
 
         # at the end, return the new string
         return output
