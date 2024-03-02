@@ -176,6 +176,8 @@ def chat() -> str:
     # this function is responsible for streaming the response
     def generate():
 
+        yield b'data: ' + str(openai_format_streamed("", __model)).encode() + b'\n\n'
+
         for chunk in api.chat(__prompt, __model, __maxTokens, __temperature, __topP):
 
             yield b'data: ' + str(openai_format_streamed(chunk, __model)).encode() + b'\n\n'
