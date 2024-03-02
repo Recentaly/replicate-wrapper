@@ -1,6 +1,7 @@
 # ---------------------------------------------- FLASK IMPORTS ---------------------------------------------- #
 from flask import Flask, render_template, request, jsonify, Response
 from flask_cors import CORS
+import os
 
 # ---------------------------------------------- API IMPORTS ---------------------------------------------- #
 import requests
