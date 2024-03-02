@@ -40,7 +40,7 @@ class ApiWrapper:
 
                 output += f"<s> {start} {message['content']} {end}"
 
-            elif message["system"] == "system":
+            elif message["role"] == "system":
 
                 output += f"<s> {start} [SYSTEM: {message['content']}] {end}"
 
