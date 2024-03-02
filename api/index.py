@@ -213,7 +213,7 @@ def models() -> str:
         ]
     }), 200
 
-# index route
+# index route to confirm functionality
 @app.route('/', methods=['GET'])
 def index():
     return "<h1>API Wrapper</h1>"
