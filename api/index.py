@@ -84,7 +84,7 @@ class ApiWrapper:
             "topP": args[2] if args else 0.9,
         }
 
-        response = requests.post(self.__url, headers=self.get_headers(), json=self.__data)
+        response = requests.post(self.__url, headers=self.get_headers(), json=self.__data, stream=True, timeout=60)
         response.raise_for_status()
         
         for chunk in response.iter_content(chunk_size=1024):
@@ -185,8 +185,27 @@ def models() -> str:
 
     return jsonify({
         "data": [
+            {"id": "mistralai/mistral-7b-v0.1 gpt"},
+            {"id": "mistralai/mistral-7b-instruct-v0.1 gpt"},
+            {"id": "mistralai/mistral-7b-instruct-v0.2 gpt"},
             {"id": "mistralai/mixtral-8x7b-instruct-v0.1. gpt"},
+
             {"id": "meta/llama-2-70b-chat gpt"},
+            {"id": "meta/llama-2-13b-chat gpt"},
+            {"id": "meta/llama-2-7b-chat gpt"},
+
+            {"id": "replicate/dolly-v2-12b gpt"},
+
+            {"id": "01-ai/yi-34b-chat gpt"},
+            {"id": "01-ai/yi-6b-chat gpt"},
+            {"id": "01-ai/yi-6b gpt"},
+
+            {"id": "google-deepmind/gemma-7b gpt"},
+            {"id": "google-deepmind/gemma-7b-it gpt"},
+            {"id": "google-deepmind/gemma-2b-it gpt"},
+            {"id": "google-deepmind/gemma-2b gpt"},
+
+            {"id": "phixtral-2x2_8"},
         ]
     }), 200
 
